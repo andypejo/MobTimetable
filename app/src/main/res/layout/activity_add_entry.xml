@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.ancho.mobtimetable.AddEntry">
+
+    <TextView
+        android:id="@+id/entryInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/entry_intro" />
+
+    <EditText
+        android:id="@+id/modCode"
+        style="@style/editView"
+        android:hint="@string/module_code" />
+
+
+    <EditText
+        android:id="@+id/startTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/start_time"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/duration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/duration"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/room"
+        style="@style/editView"
+        android:hint="@string/room" />
+
+    <Space
+        style="@style/AppTheme"
+        android:layout_width="match_parent"
+        android:layout_height="30px" />
+
+    <TextView
+        android:id="@+id/sessionType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/session_type" />
+
+    <Spinner
+        android:id="@+id/sessionTypeSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown" />
+
+    <Space
+        style="@style/AppTheme"
+        android:layout_width="match_parent"
+        android:layout_height="30px" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/day_select" />
+
+    <Spinner
+        android:id="@+id/weekDaySpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown" />
+
+    <Button
+        android:id="@+id/add"
+        style="@style/Buttons"
+        android:background="@color/colorHeader"
+        android:text="@string/Addbutton"
+        android:textColor="@color/textHeader"
+
+        />
+
+</LinearLayout>
