@@ -16,12 +16,12 @@ public class Main extends AppCompatActivity {
         setContentView(R.layout.activity_time_table);
 
         final Toast delSel = Toast.makeText(getApplicationContext(), "Select a day and event to delete",
-                             Toast.LENGTH_LONG); //Toast message for if the user is carrying out a deletion
+                             Toast.LENGTH_LONG); //message for deletion
         //to create the add button on the homepage
         Button contactEdit = (Button) findViewById(R.id.add);
         contactEdit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), AddEntry.class); //Activates AddEntry class
+                Intent intent = new Intent(v.getContext(), AddEntry.class);
                 startActivity(intent);
             }
         });
@@ -29,7 +29,7 @@ public class Main extends AppCompatActivity {
         Button deleteModCode = (Button) findViewById(R.id.remove);
         deleteModCode.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), DayOfWeek.class); //Activates DayOfWeek class with toast message instructing to select event to delete
+                Intent intent = new Intent(v.getContext(), DayOfWeek.class);
                 startActivity(intent);
                 delSel.show();
             }
@@ -38,7 +38,7 @@ public class Main extends AppCompatActivity {
         Button viewTime = (Button) findViewById(R.id.viewTimeTable);
         viewTime.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), DayOfWeek.class); //Activates DayOfWeek Class
+                Intent intent = new Intent(v.getContext(), DayOfWeek.class);
                 startActivity(intent);
             }
         });

@@ -25,29 +25,30 @@ public class ReturnClass extends ListActivity {
         setContentView(R.layout.activity_view_time_table);
         SQL repo = new SQL(this); //new SQL object
 
-        Intent intent = getIntent(); // gets the previously created intent
+        Intent intent = getIntent();
         String day = intent.getStringExtra("day");
 
-        ArrayList<HashMap<String, String>> entryList =  repo.getEntryList(day); //assigns result(s) to map
-        if(entryList.size()!=0) { //if a results is returned
+        ArrayList<HashMap<String, String>> entryList =  repo.getEntryList(day); //assigns result
+        if(entryList.size()!=0) { //on return
             ListView lv = getListView();
-            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {   //on click method for items in ListView
+            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    entry_Id = (TextView) view.findViewById(R.id.entry_ID);     //gets the ID which is hidden in the XML
-                    String Id = entry_Id.getText().toString();  //assigns ID to a string variable
-                    Intent objIndent = new Intent(getApplicationContext(),deleteEntry.class); //new intent to activate delete entry
-                    objIndent.putExtra("entry_Id", Integer.parseInt( Id));  //passes ID in order to display the entry
+                    entry_Id = (TextView) view.findViewById(R.id.entry_ID);
+                    String Id = entry_Id.getText().toString();
+                    Intent objIndent = new Intent(getApplicationContext(),deleteEntry.class);
+                    objIndent.putExtra("entry_Id", Integer.parseInt( Id));
                     startActivity(objIndent);
                 }
             });
 
-            /*Uses SimpleAdapter to display the results in the list view. Only code, room and time are displayed to minimise clutter and ID is a hidden value used for intent in the above method*/
-            ListAdapter adapter = new SimpleAdapter(this, entryList, R.layout.helper, new String[] {"code", "room", "time", "id"}, new int[] {R.id.text1, R.id.text2, R.id.text3, R.id.entry_ID});
+            //Use Adapter to display the results in a list //
+            ListAdapter adapter = new SimpleAdapter(this, entryList, R.layout.adapter_values,
+                                  new String[] {"code", "room", "time", "id"},
+                                  new int[] {R.id.text1, R.id.text2, R.id.text3, R.id.entry_ID});
             setListAdapter(adapter);
-        }else{ //if no results
-            Toast.makeText(this,"No events today",Toast.LENGTH_LONG).show(); //toast message
+        }else{
+            Toast.makeText(this,"No events today",Toast.LENGTH_LONG).show();
         }
-
     }
 }

@@ -9,19 +9,19 @@ import android.widget.Button;
 /**
  * Created by Andrew on 25/07/2017.
  */
-
+        //for viewing days of the week
 public class DayOfWeek extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.week_view);
 
-        /*Starts the ReturnClass class for the given day for each button*/
-        Button monday_button = (Button) findViewById(R.id.monday_button); //find button
+        /*gets class for given days*/
+        Button monday_button = (Button) findViewById(R.id.monday_button); //locate button
         monday_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), ReturnClass.class); //New intent for ReturnClass class
-                intent.putExtra("day","Monday"); //Passes the given day to ReturnClass so only that day is returned from the database
+                Intent intent = new Intent(v.getContext(), ReturnClass.class);
+                intent.putExtra("day","Monday"); //selected day is returned from the database
                 startActivity(intent);
             }
         });

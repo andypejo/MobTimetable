@@ -26,9 +26,9 @@ public class deleteEntry extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delete_time_table);
 
-        final Toast delConfirm = Toast.makeText(getApplicationContext(), "Event Deleted", Toast.LENGTH_SHORT); //Event deletion toast message
+        final Toast delConfirm = Toast.makeText(getApplicationContext(), "Event Deleted", Toast.LENGTH_SHORT); //Event deletion message
 
-        /*Assigning values to variables*/
+        /*Assigning variables*/
         code_view = (TextView)findViewById(R.id.code_view);
         day_view = (TextView)findViewById(R.id.day_view);
         time_view = (TextView)findViewById(R.id.time_view);
@@ -37,13 +37,13 @@ public class deleteEntry extends AppCompatActivity {
         room_view = (TextView)findViewById(R.id.room_view);
 
         _entry_Id =0;
-        Intent intent = getIntent(); //gets intent from ReturnClass class with database ID
+        Intent intent = getIntent();
         _entry_Id  =intent.getIntExtra("entry_Id", 0);
         SQL repo = new SQL(this);
-        EnterClass entry_info = new EnterClass();
-        entry_info = repo.getEntryById(_entry_Id ); //finds row from database to display
+        EnterClass entry_info;
+        entry_info = repo.getEntryById(_entry_Id );
 
-        /*Displaying the data from the database*/
+        /*Displays  data from the database*/
         code_view.setText(String.valueOf(entry_info.code));
         day_view.setText(String.valueOf(entry_info.day));
         time_view.setText(String.valueOf(entry_info.time));
@@ -51,7 +51,7 @@ public class deleteEntry extends AppCompatActivity {
         type_view.setText(String.valueOf(entry_info.type));
         room_view.setText(String.valueOf(entry_info.room));
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this); //instantiating a new alert dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this); //alert dialog
 
         builder.setTitle("Delete Event");
         builder.setMessage("Are you sure you want to delete this event?");
@@ -59,13 +59,13 @@ public class deleteEntry extends AppCompatActivity {
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() { //if you user confirms deletion on alert dialog
 
             public void onClick(DialogInterface dialog, int which) {
-                SQL repo = new SQL(getApplicationContext()); //new SQL object
-                repo.delete(_entry_Id); //delete from database
+                SQL repo = new SQL(getApplicationContext()); //new object
+                repo.delete(_entry_Id);
                 Intent intent = new Intent(getApplicationContext(), Main.class);
-                startActivity(intent); //return to home
+                startActivity(intent);
                 finish();
-                dialog.dismiss(); //dismiss alert dialog
-                delConfirm.show(); //show deletion confirmation toast message
+                dialog.dismiss(); //dismiss alert
+                delConfirm.show(); //show deletion confirmation message
             }
 
         });
@@ -78,11 +78,11 @@ public class deleteEntry extends AppCompatActivity {
             }
         });
 
-        final AlertDialog alert = builder.create(); //creates alert dialog
+        final AlertDialog alert = builder.create(); //creates alert
 
         Button remove = (Button) findViewById(R.id.remove);
         remove.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) { //if delete button is clicked
+            public void onClick(View v) {
 
                 alert.show(); //shows alert dialog
 

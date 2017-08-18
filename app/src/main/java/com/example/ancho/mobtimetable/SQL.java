@@ -92,7 +92,7 @@ public class SQL {
 
     public EnterClass getEntryById (int Id) {
 
-        /*Returns database result for given ID and sorts by ascending time order for display in ListView*/
+        /*Returns result for ID*/
         SQLiteDatabase db = dbHelp.getReadableDatabase();
         String selectQuery = "SELECT  " +
                 EnterClass.KEY_ID + "," +

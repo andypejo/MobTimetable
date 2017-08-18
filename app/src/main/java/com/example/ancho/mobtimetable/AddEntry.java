@@ -1,20 +1,18 @@
 package com.example.ancho.mobtimetable;
 
-import android.content.Intent;
+import android.content.Intent; //important statements
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 public class AddEntry extends AppCompatActivity implements android.view.View.OnClickListener {
 
-
-    EditText modCode;
-    EditText startTime;
+    //variables
+    EditText moduleCode;
+    EditText eventTime;
     EditText duration;
     EditText sessionType;
     EditText daySelect;
@@ -28,9 +26,9 @@ public class AddEntry extends AppCompatActivity implements android.view.View.OnC
         setContentView(R.layout.activity_add_entry);
 
         /*Gives the variables data*/
-        modCode = (EditText)findViewById(R.id.modCode);
+        moduleCode = (EditText)findViewById(R.id.modCode);
         daySelect = (EditText) findViewById(R.id.daySelect);
-        startTime = (EditText)findViewById(R.id.startTime);
+        eventTime = (EditText)findViewById(R.id.startTime);
         duration = (EditText)findViewById(R.id.duration);
         room = (EditText)findViewById(R.id.room);
         sessionType = (EditText)findViewById(R.id.sessionType);
@@ -39,24 +37,25 @@ public class AddEntry extends AppCompatActivity implements android.view.View.OnC
     }
 
     public void onClick(View v) {
-        /*Entry Validation*/
-        if( modCode.getText().toString().length() == 0 ) {      //Checks module code is entered
-            modCode.setError("Enter correct  Module Code");
+        /*Validation for inputs*/
+        if( moduleCode.getText().toString().length() == 0 ) {      //Checks module field isn't empty
+            moduleCode.setError("Enter correct  Module Code");
             return;
         }
-        if( startTime.getText().toString().length() == 0 ) {    //Checks start time is entered
-            startTime.setError("Please enter start time");
+        if( eventTime.getText().toString().length() == 0 ) {    //Checks start time isn't empty
+            eventTime.setError("Please enter start time");
             return;
         }
-        if( Integer.parseInt(startTime.getText().toString()) < 900 || Integer.parseInt(startTime.getText().toString()) > 1700 ) {   //Checks that the start time is within given range
-            startTime.setError("Enter time between 0900 - 1700");
+        if( Integer.parseInt(eventTime.getText().toString()) < 900  //Checks time is between 0900 - 1700
+                || Integer.parseInt(eventTime.getText().toString()) > 1700 ) {
+            eventTime.setError("Enter time between 0900 - 1700");
             return;
         }
-        if( duration.getText().toString().length() == 0 ) {     //Checks duration is entered
+        if( duration.getText().toString().length() == 0 ) {     //Checks duration isn't empty
             duration.setError("Enter the duration of the event");
             return;
         }
-        if( room.getText().toString().length() == 0 ) {         //Checks room is entered
+        if( room.getText().toString().length() == 0 ) {         //Checks room isn't empty
             room.setError("Enter a room");
             return;
         }
@@ -74,22 +73,22 @@ public class AddEntry extends AppCompatActivity implements android.view.View.OnC
             daySelect.setError("Please enter day of week(first letter upper case)");
             return;
         }
-        /*Building the database object*/
+        /*creating objects*/
         if (v == findViewById(R.id.add)) {
             SQL repo = new SQL(this);
-            EnterClass u_class = new EnterClass();
-            u_class.code = modCode.getText().toString();
-            u_class.day = daySelect.getText().toString();
-            u_class.time = Integer.parseInt(startTime.getText().toString());
-            u_class.duration = Integer.parseInt(duration.getText().toString());
-            u_class.type = sessionType.getText().toString();
-            u_class.room = room.getText().toString();
-            u_class.id = _entry_id;
+            EnterClass class_data = new EnterClass();
+            class_data.code = moduleCode.getText().toString();
+            class_data.day = daySelect.getText().toString();
+            class_data.time = Integer.parseInt(eventTime.getText().toString());
+            class_data.duration = Integer.parseInt(duration.getText().toString());
+            class_data.type = sessionType.getText().toString();
+            class_data.room = room.getText().toString();
+            class_data.id = _entry_id;
 
-            _entry_id = repo.insert(u_class);   //Inserts into database
+            _entry_id = repo.insert(class_data);   //adds to database
             Intent intent = new Intent(v.getContext(), DayOfWeek.class);
-            startActivity(intent);      //Starts new activity intent to open week view
-            Toast.makeText(this, "Event added", Toast.LENGTH_LONG).show();    // Displays toast message for entry confirmation
+            startActivity(intent);      //Starts new activity
+            Toast.makeText(this, "Event added", Toast.LENGTH_LONG).show();    // Displays confirmation message
         }
     }
 }
