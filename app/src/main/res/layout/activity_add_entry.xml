@@ -39,43 +39,23 @@
         android:inputType="number" />
 
     <EditText
-        android:id="@+id/room"
-        style="@style/editView"
-        android:hint="@string/room" />
-
-    <Space
-        style="@style/AppTheme"
-        android:layout_width="match_parent"
-        android:layout_height="30px" />
-
-    <TextView
         android:id="@+id/sessionType"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/session_type" />
+        android:hint="@string/session_type"
+        android:inputType="text" />
 
-    <Spinner
-        android:id="@+id/sessionTypeSpinner"
+    <EditText
+        android:id="@+id/daySelect"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:drawable/btn_dropdown" />
+        android:hint="@string/day_select"
+        android:inputType="text" />
 
-    <Space
-        style="@style/AppTheme"
-        android:layout_width="match_parent"
-        android:layout_height="30px" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/day_select" />
-
-    <Spinner
-        android:id="@+id/weekDaySpinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:drawable/btn_dropdown" />
+    <EditText
+        android:id="@+id/room"
+        style="@style/editView"
+        android:hint="@string/room" />
 
     <Button
         android:id="@+id/add"

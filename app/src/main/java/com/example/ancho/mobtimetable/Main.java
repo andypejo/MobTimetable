@@ -15,19 +15,16 @@ public class Main extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_time_table);
 
-        final Toast delSel = Toast.makeText(getApplicationContext(), "Select a day and event to delete", Toast.LENGTH_LONG); //Toast message for if the user is carrying out a deletion
-
+        final Toast delSel = Toast.makeText(getApplicationContext(), "Select a day and event to delete",
+                             Toast.LENGTH_LONG); //Toast message for if the user is carrying out a deletion
         //to create the add button on the homepage
         Button contactEdit = (Button) findViewById(R.id.add);
         contactEdit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), AddEntry.class); //Activates AddEntry class
                 startActivity(intent);
-
-
             }
         });
-
         //to create the delete button on the homepage
         Button deleteModCode = (Button) findViewById(R.id.remove);
         deleteModCode.setOnClickListener(new View.OnClickListener() {
@@ -35,8 +32,6 @@ public class Main extends AppCompatActivity {
                 Intent intent = new Intent(v.getContext(), DayOfWeek.class); //Activates DayOfWeek class with toast message instructing to select event to delete
                 startActivity(intent);
                 delSel.show();
-
-
             }
         });
         //to create the view button on the homepage
@@ -45,10 +40,7 @@ public class Main extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), DayOfWeek.class); //Activates DayOfWeek Class
                 startActivity(intent);
-
-
             }
         });
-
     }
 }

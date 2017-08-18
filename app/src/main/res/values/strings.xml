@@ -8,9 +8,9 @@
     <string name="HomeAdd">Add New Class</string>
     <string name="HomeView">View Class</string>
     <string name="selCont">Select a class:</string>
-    <string name="day_select">Day of Week</string>
+    <string name="day_select">Input Day (first letter capital)</string>
     <string name="start_time">Start Time</string>
     <string name="duration">Duration (hours)</string>
-    <string name="session_type">Type of Session</string>
+    <string name="session_type">Lecture, Practical or Seminar (lower case)</string>
     <string name="entry_intro">Please enter the details of the class you wish to add to your timetable</string>
 </resources>
